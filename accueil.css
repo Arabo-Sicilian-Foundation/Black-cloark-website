@@ -6,13 +6,13 @@
 
 @font-face
 {
-	font-family: bebas;
-	src: url(bebas.ttf);
+	font-family: cool;
+	src: url(cool.ttf);
 }
 
 body
 {
-	font-family: bebas;
+	font-family: cool;
 	background-color: black;
 	font-size: 150%;
 	margin-left: 100px;
