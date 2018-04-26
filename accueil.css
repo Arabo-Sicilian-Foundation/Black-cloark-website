@@ -1,0 +1,58 @@
+@font-face
+{
+	font-family: CloisterBlack;
+	src: url(CloisterBlack.ttf);
+}
+
+@font-face
+{
+	font-family: bebas;
+	src: url(bebas.ttf);
+}
+
+body
+{
+	font-family: bebas;
+	background-color: black;
+	font-size: 150%;
+	margin-left: 100px;
+	margin-right: 100px;
+}
+
+h1
+{
+	font-family: CloisterBlack;
+	color: white;
+}
+
+.menu
+{
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.menu a
+{
+	color: darkred;
+	margin: 50px;
+}
+
+.menu tr
+{
+	background-color: darkgray;
+}
+
+.menu th:hover
+{
+	background-color: gray;
+}
+
+table.menu {border-collapse: collapse;}
+
+img
+{
+	margin-top: 50px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
