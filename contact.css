@@ -1,34 +1,33 @@
 @font-face
 {
-	font-family: CloisterBlack;
-	src: url(CloisterBlack.ttf);
+    font-family: CloisterBlack;
+    src: url(CloisterBlack.ttf);
 }
 
 @font-face
 {
-	font-family: cool;
-	src: url(cool.ttf);
+    font-family: cool;
+    src: url(cool.ttf);
 }
 
 body
 {
-	font-family: cool;
-	background-color: black;
-	font-size: 150%;
-	margin-left: 100px;
-	margin-right: 100px;
+    font-family: cool;
+    background-color: #1e1e1e;
+    font-size: 150%;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
-h1
+h2
 {
-	font-family: CloisterBlack;
-	color: white;
+    fonnt-family: arial;
 }
 
 section
 {
-    margin-left: 150px;
-    margin-right: 150px;
+    margin-left: 100px;
+    margin-right: 100px;
     margin-top: 30px;
     color: white;
     border: 1px solid darkgrey;	   
@@ -36,30 +35,43 @@ section
 
 div
 {
-    margin-left: 50px;
+    margin-left: 70px;
+    margin-top: 70px;
 }
 
 
 .menu
 {
-	margin-left: auto;
-	margin-right: auto;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .menu a
 {
-	color: darkred;
-	margin: 50px;
+    color: darkred;
+    margin: 50px;
 }
 
 .menu tr
 {
-	background-color: darkgray;
+    background-color: darkgray;
 }
 
 .menu th:hover
+	     {
+		 background-color: gray;
+	     }
+
+table.menu
 {
-	background-color: gray;
+    border-collapse: collapse;
 }
 
-table.menu {border-collapse: collapse;}
+.logo_nom
+{
+    margin-top: 50px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
