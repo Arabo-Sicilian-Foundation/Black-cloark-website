@@ -9,10 +9,14 @@
     font-family: cool;
     src: url(cool.ttf);
 }
+table
+{
+    font-family: cool;
+}
 
 body
 {
-    font-family: cool;
+    font-family: arial;
     background-color: #1e1e1e;
     font-size: 150%;
     margin-left: 20px;
@@ -31,16 +35,18 @@ img
 
 section
 {
-    margin-left: 100px;
-    margin-right: 100px;
+    margin-left: 180px;
+    margin-right: 180px;
     margin-top: 30px;
     color: white;
-    border: 1px solid darkgrey;	   
+    border: 1px solid darkgrey;
+    background-color: darkgrey;
+    color: black;
+    text-align: center;
 }
 
 div
 {
-    margin-left: 70px;
     margin-top: 70px;
     margin-bottom: 100px;
 }
