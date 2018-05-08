@@ -10,6 +10,71 @@
 	<body>
 		<img src="logo_nom.png" alt="BlackCloarkProd" height="300">
 
-	</body>
+		<table class="menu">
+			<tr>
+				<th> <a href="accueil.html">ACCEUIL</a> </th>
+				<th> <a href="actualite.html">ACTUALITÉ</a> </th>
+				<th> <a href="prog.html">PROGRAMMATION</a> </th>
+				<th> <a href="media.html">MÉDIA</a> </th>
+				<th> <a href="forum.html">FORUM</a> </th>
+				<th> <a href="contact.html">CONTACT</a> </th>
+			</tr>
+		</table>
 
+		<form class="search" action="" onsubmit="rechercher()">
+			<input type="text" id="recherche" placeholder="rechercher un évènement">
+			<input type="submit" value="Rechercher">
+		</form>
+
+		<h2>Évènements à venir</h2>
+
+		<!--<?php
+			$evenement = fopen('event.txt','r');
+			$ajd = date(d-m-Y);
+
+			if($evenement)
+			{
+				while(!feof($evenement))
+				{
+					$ligne = fgets($evenement);
+					$liste($date,$nom,$lien) = explode("*",$ligne);
+					// Si l'évenement n'a pas encore eu lieu
+					if($date >= $ajd)
+					{
+						echo '<a href="'.$lien.'">'.$nom.'</a><br>';
+					}
+				}
+				fclose($evenement);
+			}
+			else
+			{
+				echo 'fichier envent introuvable';
+			}
+		?> -->
+			<h2>Évènements antérieurs</h2>
+
+		<!-- <?php
+			$evenement = fopen('event.txt','r');
+			$ajd = date(d-m-Y);
+
+			if($evenement)
+			{
+				while(!feof($evenement))
+				{
+					$ligne = fgets($evenement);
+					$liste($date,$nom,$lien) = explode("*",$ligne);
+					// Si l'évenement n'a pas encore eu lieu
+					if($date > $ajd)
+					{
+						echo '<a href="'.$lien.'">'.$nom.'</a><br>';
+					}
+				}
+				fclose($evenement);
+			}
+			else
+			{
+				echo 'fichier envent introuvable';
+			}
+		?>-->
+	</body>
 </html>

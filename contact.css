@@ -16,7 +16,7 @@ table
 
 body
 {
-    font-family: arial;
+    font-family: cool,arial;
     background-color: #1e1e1e;
     font-size: 150%;
     margin-left: 20px;
@@ -25,7 +25,7 @@ body
 
 h2
 {
-    font-family: arial;
+    font-family: cool,arial;
 }
 
 img
@@ -61,13 +61,14 @@ div
 
 .menu a
 {
-    color: darkred;
+    color: white;
     margin: 50px;
+	text-decoration: none;
 }
 
 .menu tr
 {
-    background-color: darkgray;
+    background-color: #424242;
 }
 
 .menu th:hover
@@ -87,4 +88,3 @@ table.menu
     margin-left: auto;
     margin-right: auto;
 }
-
