@@ -9,13 +9,11 @@
 <br /><br />
 
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "plpdlv,j'a,dmv,cl'u";
-
+$servername = "mira2.univ-st-etienne.fr";
+$username = "ml04444r";
+$password = "LJWNRKDJ";
 try {
-    $pdo = new PDO("mysql:host=$servername;dbname=forum", $username, $password);
-
+    $pdo = new PDO("mysql:host=$servername;dbname=ml04444r",$username,$password);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     echo "Connected successfully";
 	$sql = "INSERT INTO forum_topic (topic_titre,topic_createur) VALUES ('Autre','John')";
