@@ -60,4 +60,11 @@ img
 h2
 {
 	color: white;
+	text-decoration: underline;
+}
+
+.event
+{
+	text-decoration: none;
+	color: white;
 }

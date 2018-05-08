@@ -14,7 +14,7 @@
 			<tr>
 				<th> <a href="accueil.html">ACCEUIL</a> </th>
 				<th> <a href="actualite.html">ACTUALITÉ</a> </th>
-				<th> <a href="prog.html">PROGRAMMATION</a> </th>
+				<th> <a href="prog.php">PROGRAMMATION</a> </th>
 				<th> <a href="media.html">MÉDIA</a> </th>
 				<th> <a href="forum.html">FORUM</a> </th>
 				<th> <a href="contact.html">CONTACT</a> </th>
@@ -26,55 +26,58 @@
 			<input type="submit" value="Rechercher">
 		</form>
 
-		<h2>Évènements à venir</h2>
+		<h2>Évènements à venir :</h2>
 
-		<!--<?php
+		<?php
 			$evenement = fopen('event.txt','r');
-			$ajd = date(d-m-Y);
+			$ajd = date("d-m-Y");
 
 			if($evenement)
 			{
 				while(!feof($evenement))
 				{
 					$ligne = fgets($evenement);
-					$liste($date,$nom,$lien) = explode("*",$ligne);
+					$liste = explode(";",$ligne);
+					$date = date("d-m-Y",strtotime($liste[0]));
 					// Si l'évenement n'a pas encore eu lieu
-					if($date >= $ajd)
+					if(strtotime($date) >= strtotime($ajd))
 					{
-						echo '<a href="'.$lien.'">'.$nom.'</a><br>';
+						echo '<a class="event" href="'.$liste[2].'">'.$liste[1].'</a><br>';
 					}
 				}
 				fclose($evenement);
 			}
 			else
 			{
-				echo 'fichier envent introuvable';
+				echo 'fichier event introuvable';
 			}
-		?> -->
-			<h2>Évènements antérieurs</h2>
+		?>
 
-		<!-- <?php
+		<h2>Évènements antérieurs :</h2>
+
+		<?php
 			$evenement = fopen('event.txt','r');
-			$ajd = date(d-m-Y);
+			$ajd = date("d-m-Y");
 
 			if($evenement)
 			{
 				while(!feof($evenement))
 				{
 					$ligne = fgets($evenement);
-					$liste($date,$nom,$lien) = explode("*",$ligne);
-					// Si l'évenement n'a pas encore eu lieu
-					if($date > $ajd)
+					$liste = explode(";",$ligne);
+					$date = date("d-m-Y",strtotime($liste[0]));
+					// Si l'évenement a déjà eu lieu
+					if(strtotime($date) < strtotime($ajd))
 					{
-						echo '<a href="'.$lien.'">'.$nom.'</a><br>';
+						echo '<a class="event" href="'.$liste[2].'">'.$liste[1].'</a><br>';
 					}
 				}
 				fclose($evenement);
 			}
 			else
 			{
-				echo 'fichier envent introuvable';
+				echo 'fichier event introuvable';
 			}
-		?>-->
+		?>
 	</body>
 </html>
