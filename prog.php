@@ -21,8 +21,8 @@
 			</tr>
 		</table>
 
-		<form class="search" action="" onsubmit="rechercher()">
-			<input type="text" id="recherche" placeholder="rechercher un évènement"><input type="submit" value="Rechercher">
+		<form class="search" action="recherche.php" method="post">
+			<input type="text" name="recherche" placeholder="rechercher un évènement"><input type="submit" value="Rechercher">
 		</form>
 
 		<h2>Évènements à venir :</h2>
