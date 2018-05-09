@@ -3,8 +3,8 @@
 	<head>
 		<meta charset="utf-8">
 		<title>Black Cloark Production</title>
+		<link rel="icon" type="image/png" href="favicon.png">
 		<link href="prog.css" rel="stylesheet" type="text/css">
-		<link rel="icon" type="image" href="logo.png">
 	</head>
 
 	<body>
@@ -22,8 +22,7 @@
 		</table>
 
 		<form class="search" action="" onsubmit="rechercher()">
-			<input type="text" id="recherche" placeholder="rechercher un évènement">
-			<input type="submit" value="Rechercher">
+			<input type="text" id="recherche" placeholder="rechercher un évènement"><input type="submit" value="Rechercher">
 		</form>
 
 		<h2>Évènements à venir :</h2>
