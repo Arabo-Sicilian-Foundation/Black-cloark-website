@@ -9,13 +9,9 @@
 
 	<body>
 		<div class="connexion">
-  		  <form action="connexion.php" method="post">
-  			  <input type="text" size="5" name="login" placeholder="login">
-  			  <input type="password" size="5" name="pswrd" placeholder="mot de passe">
-  			  <input type="submit" value="connexion">
-  		  </form>
-  		  <a href="signin.php">créer un compte</a>
-  	  </div>
+  		  	<a href="connexion.php">se connecter</a>
+  		  	<a href="register.php">créer un compte</a>
+	  	</div>
 
 		<img src="logo_nom.png" alt="BlackCloarkProd" height="300">
 
