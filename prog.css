@@ -15,8 +15,8 @@ body
 	font-family: cool;
 	background-color: #1e1e1e;
 	font-size: 150%;
-	margin-left: 100px;
-	margin-right: 100px;
+	margin-left: 20px;
+	margin-right: 20px;
 }
 
 .menu
@@ -46,7 +46,6 @@ table.menu {border-collapse: collapse;}
 
 img
 {
-	margin-top: 50px;
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
@@ -55,6 +54,7 @@ img
 .search
 {
 	text-align: right;
+	margin-right: 60px;
 }
 
 h2
@@ -72,4 +72,19 @@ h2
 a.event:hover
 {
 	color: #0c0c0c;
+}
+
+.connexion
+{
+	text-align: right;
+}
+
+.connexion a
+{
+	font-size: 18px;
+}
+
+section
+{
+	margin-left: 60px;
 }

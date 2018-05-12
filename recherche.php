@@ -8,6 +8,15 @@
 	</head>
 
 	<body>
+		<div class="connexion">
+  		  <form action="connexion.php" method="post">
+  			  <input type="text" size="5" name="login" placeholder="login">
+  			  <input type="password" size="5" name="pswrd" placeholder="mot de passe">
+  			  <input type="submit" value="connexion">
+  		  </form>
+  		  <a href="signin.php">créer un compte</a>
+  	  </div>
+
 		<img src="logo_nom.png" alt="BlackCloarkProd" height="300">
 
 		<table class="menu">
@@ -25,39 +34,94 @@
 			<input type="text" name="recherche" placeholder="rechercher un évènement"><input type="submit" value="Rechercher">
 		</form>
 
-		<h2>Résultat de la recherche :</h2>
-<?php
-	if(isset($_POST['recherche']))
-	{
-		$recherche = $_POST['recherche'];
-		$event = fopen('event.txt','r');
-		$i = 0;
-		if($event)
+		<section>
+			<h2>Résultat de la recherche :</h2>
+	<?php
+		if(isset($_POST['recherche']))
 		{
-			while(!feof($event))
+			$recherche = $_POST['recherche'];
+			$event = fopen('event.txt','r');
+			$i = 0;
+			if($event)
 			{
-				$ligne = fgets($event);
-				$pos = strripos($ligne,$recherche);
-
-				if($pos !== false)
+				while(!feof($event))
 				{
-					$liste = explode (";",$ligne);
-					echo '<a class="event" href="'.$liste[2].'">'.$liste[1].'</a> <br>';
-					$i++;
+					$ligne = fgets($event);
+					$pos = strripos($ligne,$recherche);
+
+					if($pos !== false)
+					{
+						$liste = explode (";",$ligne);
+						echo '<a class="event" href="'.$liste[2].'">'.$liste[1].'</a> <br>';
+						$i++;
+					}
+				}
+				if($i === 0)
+				{
+					echo 'Aucun évènement ne correspond à votre recherche.';
+				}
+				fclose($event);
+			}
+			else
+			{
+				echo 'fichier event introuvable.';
+			}
+		}
+	?>
+	<h2>Évènements à venir :</h2>
+
+	<?php
+		$evenement = fopen('event.txt','r');
+		$ajd = date("d-m-Y");
+
+		if($evenement)
+		{
+			while(!feof($evenement))
+			{
+				$ligne = fgets($evenement);
+				$liste = explode(";",$ligne);
+				$date = date("d-m-Y",strtotime($liste[0]));
+				// Si l'évenement n'a pas encore eu lieu
+				if(strtotime($date) >= strtotime($ajd))
+				{
+					echo '<a class="event" href="'.$liste[2].'">'.$liste[1].'</a><br>';
 				}
 			}
-			if($i === 0)
-			{
-				echo 'Aucun évènement ne correspond à votre recherche.';
-			}
-			fclose($event);
+			fclose($evenement);
 		}
 		else
 		{
-			echo 'fichier event introuvable.';
+			echo 'fichier event introuvable';
 		}
-	}
-?>
+	?>
+
+	<h2>Évènements antérieurs :</h2>
+
+	<?php
+		$evenement = fopen('event.txt','r');
+		$ajd = date("d-m-Y");
+
+		if($evenement)
+		{
+			while(!feof($evenement))
+			{
+				$ligne = fgets($evenement);
+				$liste = explode(";",$ligne);
+				$date = date("d-m-Y",strtotime($liste[0]));
+				// Si l'évenement a déjà eu lieu
+				if(strtotime($date) < strtotime($ajd))
+				{
+					echo '<a class="event" href="'.$liste[2].'">'.$liste[1].'</a><br>';
+				}
+			}
+			fclose($evenement);
+		}
+		else
+		{
+			echo 'fichier event introuvable';
+		}
+	?>
+</section>
 
 </body>
 </html>
