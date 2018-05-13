@@ -22,7 +22,7 @@
 				<th> <a href="actualite.html">ACTUALITÉ</a> </th>
 				<th> <a href="prog.php">PROGRAMMATION</a> </th>
 				<th> <a href="media.html">MÉDIA</a> </th>
-				<th> <a href="forum.html">FORUM</a> </th>
+				<th> <a href="index.php">FORUM</a> </th>
 				<th> <a href="contact.html">CONTACT</a> </th>
 			</tr>
 		</table>

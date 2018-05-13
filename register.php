@@ -5,27 +5,7 @@ include("includes/identifiants.php");
 include("includes/debut.php");
 include("includes/menu.php");
 ?>
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<title>connexion-Black Cloark Production</title>
-		<link rel="icon" type="image/png" href="favicon.png">
-		<link href="prog.css" rel="stylesheet" type="text/css">
-	</head>
 
-	<body>
-		<img src="logo_nom.png" alt="BlackCloarkProd" height="300">
-		<table class="menu">
-  		  <tr>
-  			<th> <a href="accueil.html">ACCUEIL</a> </th>
-  			<th> <a href="actualite.html">ACTUALITÉ</a> </th>
-  			<th> <a href="prog.php">PROGRAMMATION</a> </th>
-  			<th> <a href="media.html">MÉDIA</a> </th>
-  			<th> <a href="forum.html">FORUM</a> </th>
-  	<th> <a href="contact.html">CONTACT</a> </th>
-        	</tr>
-      </table>
 <?php
 if ($id!=0) erreur(ERR_IS_CO);
 
@@ -35,7 +15,6 @@ if (empty($_POST['pseudo']))
     <h1>Inscription</h1>
 
 	<form method="post" action="register.php">
-    	<fieldset><legend>Identifiants</legend>
     		Pseudo :<input name="pseudo" type="text"> (le pseudo doit contenir entre 3 et 15 caractères)
 			<br>
     		Mot de Passe :<input type="password" name="password">
@@ -43,7 +22,6 @@ if (empty($_POST['pseudo']))
     		Confirmer le mot de passe :<input type="password" name="confirm">
 			<br>
 			adresse Mail :<input type="email" name="email">
-    	</fieldset>
     	<p><input type="submit" value="S'inscrire" /></p>
 	</form>
 <?php
@@ -128,7 +106,7 @@ else
 		$query->bindValue(':temps', $temps, PDO::PARAM_INT);
         $query->execute();
 
-	//Et on définit les variables de sessions
+		//Et on définit les variables de sessions
         $_SESSION['pseudo'] = $pseudo;
         $_SESSION['id'] = $db->lastInsertId(); ;
         $_SESSION['level'] = 2;

@@ -5,18 +5,6 @@ include("includes/debut.php");
 include("includes/menu.php");
 ?>
 
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<title>connexion-Black Cloark Production</title>
-		<link rel="icon" type="image/png" href="favicon.png">
-		<link href="prog.css" rel="stylesheet" type="text/css">
-	</head>
-
-	<body>
-		<img src="logo_nom.png" alt="BlackCloarkProd" height="300">
-
 <?php
 if (!isset($_POST['pseudo'])) //On est dans la page de formulaire
 {
