@@ -8,11 +8,17 @@
 	</head>
 
 	<body>
-		<div class="connexion">
-  		  <a href="connexion.php">se connecter</a>
-  		  <br>
-  		  <a href="register.php">créer un compte</a>
-  	  	</div>
+		<?php
+		if ($id!=0){echo '<a href="deco.php">déconnexion</a>';}
+		else
+		{
+			echo'<div class="connexion">
+			  	<a href="connexion.php">se connecter</a>
+			  	<br>
+			  	<a href="register.php">créer un compte</a>
+			</div>';
+		}
+		?>
 
 		<img src="logo_nom.png" alt="BlackCloarkProd" height="300">
 

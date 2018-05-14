@@ -90,17 +90,17 @@ else
 	        $query=$db->prepare('INSERT INTO forum_membres (membre_pseudo, membre_mdp, membre_email, membre_inscrit,
 	        membre_derniere_visite)
 	        VALUES (:pseudo, :pass, :email, :temps, :temps)');
+
+			$query->bindValue(':pseudo', $pseudo, PDO::PARAM_STR);
+			$query->bindValue(':pass', $pass, PDO::PARAM_INT);
+			$query->bindValue(':email', $email, PDO::PARAM_STR);
+			$query->bindValue(':temps', $temps, PDO::PARAM_INT);
+	        $query->execute();
 		}
 		catch (Exception $e)
 		{
 			die('Erreur : ' . $e->getMessage());
 		}
-		
-		$query->bindValue(':pseudo', $pseudo, PDO::PARAM_STR);
-		$query->bindValue(':pass', $pass, PDO::PARAM_INT);
-		$query->bindValue(':email', $email, PDO::PARAM_STR);
-		$query->bindValue(':temps', $temps, PDO::PARAM_INT);
-        $query->execute();
 
 
 		//Et on définit les variables de sessions

@@ -9,7 +9,7 @@ if ($id!=0) erreur(ERR_IS_CO);
 if (!isset($_POST['pseudo'])) //On est dans la page de formulaire
 {
     echo '<div class="connexion">
-			<form action="connexion.php" method="post">
+			<form method="post" action="connexion.php">
 				<input type="text" name="login" placeholder="login">
 				<br>
 				<input type="password" name="pswrd" placeholder="mot de passe">
@@ -26,10 +26,17 @@ else
 		$login = $_POST['login'];
 		$pswrd =  $_POST['pswrd'];
 
-		$query = $db->prepare('SELECT membre_mdp, membre_id, membre_rang, membre_pseudo FROM forum_membres WHERE membre_pseudo = :login');
+		try
+		{
+			$query = $db->prepare('SELECT membre_mdp, membre_id, membre_rang, membre_pseudo FROM forum_membres WHERE membre_pseudo = :login');
+			$query->bindParam(':login','$login');
+			$query->execute();
+		}
+		catch (Exception $e)
+		{
+			die('Erreur : ' . $e->getMessage());
+		}
 
-		$query->bindParam(':login','$login');
-		$query->execute();
 		$data = $query->fetch();
 
 		// Si bon mot de passe
