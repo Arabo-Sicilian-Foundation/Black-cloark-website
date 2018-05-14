@@ -4,6 +4,10 @@
 
 <?php
 	echo (!empty($titre))?'<title>'.$titre.'</title>':'<title> Forum - Black Cloark </title>';
+	//Attribution des variables de session
+	$lvl=(isset($_SESSION['level']))?(int) $_SESSION['level']:1;
+	$id=(isset($_SESSION['id']))?(int) $_SESSION['id']:0;
+	$pseudo=(isset($_SESSION['pseudo']))?$_SESSION['pseudo']:'';
 ?>
 
 		<meta charset="utf-8">
@@ -13,31 +17,35 @@
 	</head>
 
 	<body>
-  	  <div class="connexion">
-  		  <a href="connexion.php">se connecter</a>
-  		  <br>
-  		  <a href="register.php">créer un compte</a>
-  	  </div>
-
+		<?php
+		if($id == 0)
+		{
+			echo'<div class="connexion">
+  		  		<a href="connexion.php">se connecter</a>
+  		  		<br>
+  		  		<a href="register.php">créer un compte</a>
+  	  		</div>';
+		}
+		else
+		{
+				echo'<a class="connexion" href="deco.php">déconnexion</a>';
+		}
+		?>
   	  <img src="logo_nom.png" alt="BlackCloarkProd" height="300">
 
   	  <table class="menu">
   		  <tr>
-  			<th> <a href="accueil.html">ACCUEIL</a> </th>
+  			<th> <a href="accueil.php">ACCUEIL</a> </th>
   			<th> <a href="actualite.html">ACTUALITÉ</a> </th>
   			<th> <a href="prog.php">PROGRAMMATION</a> </th>
   			<th> <a href="media.html">MÉDIA</a> </th>
   			<th> <a href="index.php">FORUM</a> </th>
-  			<th> <a href="contact.html">CONTACT</a> </th>
+  			<th> <a href="contact.php">CONTACT</a> </th>
         </tr>
       </table>
 
 <?php
 
-//Attribution des variables de session
-$lvl=(isset($_SESSION['level']))?(int) $_SESSION['level']:1;
-$id=(isset($_SESSION['id']))?(int) $_SESSION['id']:0;
-$pseudo=(isset($_SESSION['pseudo']))?$_SESSION['pseudo']:'';
 
 include("function.php");
 include("constants.php");

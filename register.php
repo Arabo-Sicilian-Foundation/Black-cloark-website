@@ -14,7 +14,7 @@ if (empty($_POST['pseudo']))
 	<form method="post" action="register.php">
     		Pseudo :<input name="pseudo" type="text"> (le pseudo doit contenir entre 3 et 15 caractères)
 			<br>
-    		Mot de Passe :<input type="password" name="password">
+    		Mot de Passe :<input type="password" name="pswrd">
 			<br>
     		Confirmer le mot de passe :<input type="password" name="confirm">
 			<br>
@@ -38,12 +38,12 @@ else
     $temps = time();
     $pseudo=$_POST['pseudo'];
     $email = $_POST['email'];
-    $pass = md5($_POST['password']);
+    $pass = md5($_POST['pswrd']);
     $confirm = md5($_POST['confirm']);
 
 	// Verif Pseudo
 	$query=$db->prepare('SELECT COUNT(*) AS nbr FROM forum_membres WHERE membre_pseudo =:pseudo');
-    $query->bindValue(':pseudo',$pseudo, PDO::PARAM_STR);
+    $query->bindParam(':pseudo',$pseudo);
     $query->execute();
     $pseudo_free=($query->fetchColumn()==0)?1:0;
     $query->CloseCursor();
@@ -82,8 +82,7 @@ else
    if ($i==0)
    {
 		echo'<h1>Inscription terminée</h1>';
-        echo'<p>Bienvenue '.stripslashes(htmlspecialchars($_POST['pseudo'])).' vous êtes maintenant inscrit</p>
-		<p>Cliquez <a href="accueil.html">ici</a> pour revenir à la page d accueil</p>';
+        echo'<p>Bienvenue '.$_POST['pseudo'].' vous êtes maintenant inscrit</p>';
 
 		try
 		{
@@ -91,10 +90,10 @@ else
 	        membre_derniere_visite)
 	        VALUES (:pseudo, :pass, :email, :temps, :temps)');
 
-			$query->bindValue(':pseudo', $pseudo, PDO::PARAM_STR);
-			$query->bindValue(':pass', $pass, PDO::PARAM_INT);
-			$query->bindValue(':email', $email, PDO::PARAM_STR);
-			$query->bindValue(':temps', $temps, PDO::PARAM_INT);
+			$query->bindValue(':pseudo', $pseudo);
+			$query->bindValue(':pass', $pass);
+			$query->bindValue(':email', $email);
+			$query->bindValue(':temps', $temps);
 	        $query->execute();
 		}
 		catch (Exception $e)
@@ -102,8 +101,6 @@ else
 			die('Erreur : ' . $e->getMessage());
 		}
 
-
-		//Et on définit les variables de sessions
         $_SESSION['pseudo'] = $pseudo;
         $_SESSION['id'] = $db->lastInsertId(); ;
         $_SESSION['level'] = 2;
