@@ -2,7 +2,7 @@
 session_start();
 
 $titre = "Forum - Black Cloark";
-include("includes/identifiants.php");
+include("includes/identifiant.php");
 include("includes/debut.php");
 include("includes/menu.php");
 
@@ -26,15 +26,6 @@ $query->execute();
 
 <?php
     // description, nombre de réponses etc...
-
-    echo'<tr><td><img src="./images/message.gif" alt="message" /></td>
-    <td class="titre"><strong>
-    <a href="./voirforum.php?f='.$data['forum_id'].'">
-    '.stripslashes(htmlspecialchars($data['forum_name'])).'</a></strong>
-    <br />'.nl2br(stripslashes(htmlspecialchars($data['forum_desc']))).'</td>
-    <td class="nombresujets">'.$data['forum_topic'].'</td>
-    <td class="nombremessages">'.$data['forum_post'].'</td>';
-
     // Deux cas possibles :
     // Soit il y a un nouveau message, soit le forum est vide
     if (!empty($data['forum_post']))

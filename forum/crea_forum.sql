@@ -10,7 +10,7 @@ membre_email varchar(32) collate latin1_general_ci NOT NULL,
 membre_inscrit int(11) NOT NULL,
 membre_derniere_visite int(11) NOT NULL,
 membre_rang tinyint (4) DEFAULT 2,
-membre_post int(11) NOT NULL,
+membre_post int(11) NOT NULL DEFAULT 0,
 PRIMARY KEY  (`membre_id`)
 );
 

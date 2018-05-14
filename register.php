@@ -1,12 +1,9 @@
 <?php
 session_start();
-$titre="Enregistrement";
-include("includes/identifiants.php");
+$titre="Register - Black Cloark";
+include("includes/identifiant.php");
 include("includes/debut.php");
-include("includes/menu.php");
-?>
 
-<?php
 if ($id!=0) erreur(ERR_IS_CO);
 
 if (empty($_POST['pseudo']))
@@ -69,9 +66,7 @@ else
 		$i++;
     }
 
-	//Vérification de l'adresse email
-
-   // On test si l'adresse existe deja
+   // On test si l'email existe deja
    $query=$db->prepare('SELECT COUNT(*) AS nbr FROM forum_membres WHERE membre_email =:mail');
    $query->bindValue(':mail',$email, PDO::PARAM_STR);
    $query->execute();
@@ -84,27 +79,29 @@ else
 	   $i++;
    }
 
-   // Forme
-   if (!preg_match("#^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]{2,}\.[a-z]{2,4}$#", $email) || empty($email))
-   {
-	   $email_erreur2 = "email invalide";
-	   $i++;
-   }
-
    if ($i==0)
    {
 		echo'<h1>Inscription terminée</h1>';
         echo'<p>Bienvenue '.stripslashes(htmlspecialchars($_POST['pseudo'])).' vous êtes maintenant inscrit</p>
-		<p>Cliquez <a href="acceuil.html">ici</a> pour revenir à la page d accueil</p>';
+		<p>Cliquez <a href="accueil.html">ici</a> pour revenir à la page d accueil</p>';
 
-        $query=$db->prepare('INSERT INTO forum_membres (membre_pseudo, membre_mdp, membre_email, membre_inscrit,
-        membre_derniere_visite)
-        VALUES (:pseudo, :pass, :email, :temps, :temps)');
+		try
+		{
+	        $query=$db->prepare('INSERT INTO forum_membres (membre_pseudo, membre_mdp, membre_email, membre_inscrit,
+	        membre_derniere_visite)
+	        VALUES (:pseudo, :pass, :email, :temps, :temps)');
+		}
+		catch (Exception $e)
+		{
+			die('Erreur : ' . $e->getMessage());
+		}
+		
 		$query->bindValue(':pseudo', $pseudo, PDO::PARAM_STR);
 		$query->bindValue(':pass', $pass, PDO::PARAM_INT);
 		$query->bindValue(':email', $email, PDO::PARAM_STR);
 		$query->bindValue(':temps', $temps, PDO::PARAM_INT);
         $query->execute();
+
 
 		//Et on définit les variables de sessions
         $_SESSION['pseudo'] = $pseudo;

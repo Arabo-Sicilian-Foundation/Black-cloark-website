@@ -1,11 +1,11 @@
 <?php
 session_start();
-include("includes/identifiants.php");
+$titre="Connexion - Black Cloark";
+include("includes/identifiant.php");
 include("includes/debut.php");
-include("includes/menu.php");
-?>
 
-<?php
+if ($id!=0) erreur(ERR_IS_CO);
+
 if (!isset($_POST['pseudo'])) //On est dans la page de formulaire
 {
     echo '<div class="connexion">
