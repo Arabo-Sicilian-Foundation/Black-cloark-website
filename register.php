@@ -35,7 +35,6 @@ else
 
 	// On recup les variables
 	$i = 0;
-    $temps = time();
     $pseudo=$_POST['pseudo'];
     $email = $_POST['email'];
     $pass = md5($_POST['pswrd']);
@@ -86,14 +85,12 @@ else
 
 		try
 		{
-	        $query=$db->prepare('INSERT INTO forum_membres (membre_pseudo, membre_mdp, membre_email, membre_inscrit,
-	        membre_derniere_visite)
-	        VALUES (:pseudo, :pass, :email, :temps, :temps)');
+	        $query=$db->prepare('INSERT INTO forum_membres (membre_pseudo, membre_mdp, membre_email)
+	        VALUES (:pseudo, :pass, :email)');
 
 			$query->bindValue(':pseudo', $pseudo);
 			$query->bindValue(':pass', $pass);
 			$query->bindValue(':email', $email);
-			$query->bindValue(':temps', $temps);
 	        $query->execute();
 		}
 		catch (Exception $e)

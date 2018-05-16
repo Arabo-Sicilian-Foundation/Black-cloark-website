@@ -6,13 +6,29 @@ include("includes/debut.php");
 
 if ($id==0) erreur(ERR_ISNT_CO);
 
-if(isset($_POST['post']))
+if(isset($_POST['texte']))
 {
-    $post=$db->prepare('INSERT INTO forum_post(post_createur,post_texte,post_time,topic_id) VALUES (:createur,:texte,CURRENT_TIMESTAMP,:topicID)');
-    $post->bindParam(':createur',$_SESSION['pseudo']);
-    $post->bindParam(':texte',$_POST['texte']);
-    $post->bindParam(':topicID',$_GET['topic_id']);
-    $post->execute();
+
+	$stmt = $db->prepare('SELECT membre_id FROM forum_membres WHERE membre_pseudo=:id');
+	$stmt->bindParam('id',$_SESSION['pseudo']);
+	$stmt->execute();
+	$auteur=$stmt->fetch();
+
+	try
+	{
+		$post=$db->prepare('INSERT INTO forum_post (post_createur,post_texte,topic_id)
+		VALUES (:createur,:texte,:topicID)');
+
+	    $post->bindParam(':createur',$auteur['membre_id']);
+	    $post->bindParam(':texte',$_POST['texte']);
+	    $post->bindParam(':topicID',$_GET['topic_id']);
+	    $post->execute();
+	}
+	catch (Exception $e)
+	{
+		die('Erreur : ' . $e->getMessage());
+	}
+	$stmt->CloseCursor();
 }
 
 if(isset($_GET['topic_id']))
@@ -28,7 +44,6 @@ if(isset($_GET['topic_id']))
 		<tr>
 			<th>Contenu</th>
 			<th>Auteur</th>
-			<th>Date</th>
 		</tr>
 
 	<?php
@@ -41,23 +56,24 @@ if(isset($_GET['topic_id']))
 		echo '
 		<tr>
 		<td>'.$discussion[$i]['post_texte'].'</a></td>
-		<td>'.$posteur.'</td>
-		<td>'.$result_discuss[$i]['post_time'].'</td>';
+		<td>'.$posteur['membre_pseudo'].'</td>';
 		if($_SESSION['pseudo']==$posteur)
 		{
 		  	echo '<td><a href="delete.php?idpost='.$discussion[$i]['post_id'].'&idtopic='.$_GET['topic_id'].'">supprimer</a></td>';
     	}
     	echo '</tr>';
+		$membres->CloseCursor();
   	}
+	echo '</table>';
+	echo'
+	<form class="newpost" action="topic.php?topic_id='.$_GET['topic_id'].'" method="post">
+		<textarea rows="10" cols="100" name="texte" placeholder="contenu" required></textarea>
+		<br>
+		<input type="submit" value="Poster">
+		</form>';
 }
+
+	$posts->CloseCursor();
 ?>
-<form class="newpost" action="topic.php?topic_id=<?php$_GET['topic_id']?>" method="post">
-	<textarea rows="10" cols="100" name="texte" placeholder="contenu" required></textarea>
-	<br>
-	<input type="submit" value="Poster">
-</form>
-
-
-
 </body>
 </html>

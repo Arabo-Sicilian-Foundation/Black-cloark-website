@@ -1,30 +1,9 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<title>Black Cloark Production</title>
-		<link rel="icon" type="image/png" href="favicon.png">
-		<link href="prog.css" rel="stylesheet" type="text/css">
-	</head>
-
-	<body>
-		<div class="connexion">
-  		  	<a href="connexion.php">se connecter</a>
-  		  	<a href="register.php">créer un compte</a>
-	  	</div>
-
-		<img src="logo_nom.png" alt="BlackCloarkProd" height="300">
-
-		<table class="menu">
-			<tr>
-				<th> <a href="accueil.html">ACCEUIL</a> </th>
-				<th> <a href="actualite.html">ACTUALITÉ</a> </th>
-				<th> <a href="prog.php">PROGRAMMATION</a> </th>
-				<th> <a href="media.html">MÉDIA</a> </th>
-				<th> <a href="forum.html">FORUM</a> </th>
-				<th> <a href="contact.html">CONTACT</a> </th>
-			</tr>
-		</table>
+<?php
+session_start();
+$titre = "Forum - Black Cloark";
+include("includes/identifiant.php");
+include("includes/debut.php");
+?>
 
 		<form class="search" action="recherche.php" method="post">
 			<input type="text" name="recherche" placeholder="rechercher un évènement"><input type="submit" value="Rechercher">

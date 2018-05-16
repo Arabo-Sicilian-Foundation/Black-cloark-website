@@ -9,8 +9,29 @@ if ($id==0) erreur(ERR_ISNT_CO);
 
 <h1>Forum</h1>
 <?php
-$totaldesmessages = 0;
-$categorie = NULL;
+if(isset($_POST['sujet']))
+{
+	$stmt = $db->prepare('SELECT membre_id FROM forum_membres WHERE membre_pseudo=:id');
+	$stmt->bindParam('id',$_SESSION['pseudo']);
+	$stmt->execute();
+	$auteur=$stmt->fetch();
+
+	try
+	{
+		$post=$db->prepare('INSERT INTO forum_topic (topic_titre,topic_createur)
+		VALUES (:sujet,:auteur)');
+
+	    $post->bindParam(':sujet',$_POST['sujet']);
+		$post->bindParam(':auteur',$auteur['membre_id']);
+	    $post->execute();
+	}
+	catch (Exception $e)
+	{
+		die('Erreur : ' . $e->getMessage());
+	}
+
+	$stmt->CloseCursor();
+}
 ?>
 
 <?php
@@ -28,7 +49,6 @@ $topics->execute();
 		<th>Sujet</th>
 		<th>Auteur</th>
 		<th>Messages</th>
-		<th>Dernier message</th>
 	</tr>
 <?php
 
@@ -49,8 +69,18 @@ while($data = $topics->fetch())
 		<td><a href="topic.php?topic_id='.$data['topic_id'].'">'.$data['topic_titre'].'</a></td>
 		<td>'.$auteur['membre_pseudo'].'</td>
 		<td>'.$nombreMessages.'</td>
-		<td>'.$data['topic_last_post'].'</td>
 	</tr>';
 }
 
 echo '</table>';
+
+echo'
+<form class="newTopic" action="index.php" method="post">
+	<input type="text" name="sujet" placeholder="Sujet" required>
+	<br>
+	<input type="submit" value="Créer">
+	</form>';
+
+?>
+</body>
+</html>

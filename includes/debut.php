@@ -36,9 +36,7 @@
   	  <table class="menu">
   		  <tr>
   			<th> <a href="accueil.php">ACCUEIL</a> </th>
-  			<th> <a href="actualite.html">ACTUALITÉ</a> </th>
   			<th> <a href="prog.php">PROGRAMMATION</a> </th>
-  			<th> <a href="media.html">MÉDIA</a> </th>
   			<th> <a href="index.php">FORUM</a> </th>
   			<th> <a href="contact.php">CONTACT</a> </th>
         </tr>
