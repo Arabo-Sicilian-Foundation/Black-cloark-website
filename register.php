@@ -9,10 +9,10 @@ if ($id!=0) erreur(ERR_IS_CO);
 if (empty($_POST['pseudo']))
 {
 ?>
-    <h1>Inscription</h1>
+    <h1 class="register">Inscription</h1>
 
-	<form method="post" action="register.php">
-    		Pseudo :<input name="pseudo" type="text"> (le pseudo doit contenir entre 3 et 15 caractères)
+	<form method="post" action="register.php" class="register">
+    		Pseudo :<input name="pseudo" type="text"><br>(le pseudo doit contenir entre 3 et 15 caractères)
 			<br>
     		Mot de Passe :<input type="password" name="pswrd">
 			<br>

@@ -3,7 +3,7 @@ DROP TABLE forum_post;
 DROP TABLE forum_topic;
 
 CREATE TABLE forum_membres (
-membre_id int(11) NOT NULL AUTO_INCREMENT,
+membre_id int(11) AUTO_INCREMENT,
 membre_pseudo varchar(30),
 membre_mdp varchar(32),
 membre_email varchar(32),

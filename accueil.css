@@ -176,3 +176,11 @@ section.post
 	text-decoration: none;
 	color: red;
 }
+
+.register
+{
+	color: white;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}

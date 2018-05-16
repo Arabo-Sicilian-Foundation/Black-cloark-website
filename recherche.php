@@ -9,7 +9,7 @@ include("includes/debut.php");
 			<input type="text" name="recherche" placeholder="rechercher un évènement"><input type="submit" value="Rechercher">
 		</form>
 
-		<section>
+		<section class="event">
 			<h2>Résultat de la recherche :</h2>
 	<?php
 		if(isset($_POST['recherche']))
