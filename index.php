@@ -3,6 +3,8 @@ session_start();
 $titre = "Forum - Black Cloark";
 include("includes/identifiant.php");
 include("includes/debut.php");
+
+if ($id==0) erreur(ERR_ISNT_CO);
 ?>
 
 <h1>Forum</h1>
@@ -14,30 +16,40 @@ $categorie = NULL;
 <?php
 
 $membres=$db->prepare('SELECT * FROM forum_membres');
-$query->execute();
+$membres->execute();
 $posts=$db->prepare('SELECT * FROM forum_post');
-$query->execute();
+$posts->execute();
 $topics=$db->prepare('SELECT * FROM forum_topic');
-$query->execute();
+$topics->execute();
 ?>
 
 <table class="topic">
 	<tr>
 		<th>Sujet</th>
-		<th>Autueur</th>
+		<th>Auteur</th>
 		<th>Messages</th>
 		<th>Dernier message</th>
 	</tr>
 <?php
 
-while($stmt = $query->fetch())
+while($data = $topics->fetch())
 {
+	$nbPosts=$db->prepare('SELECT * FROM forum_post WHERE topic_id=:id');
+	$nbPosts->bindParam(':id',$data['topic_id']);
+	$nbPosts->execute();
+	$nombreMessages = $nbPosts->rowCount();
+
+	$stmt=$db->prepare('SELECT membre_pseudo FROM forum_membres WHERE membre_id=:idmembre');
+	$stmt->bindParam(':idmembre',$data['topic_createur']);
+	$stmt->execute();
+	$auteur = $stmt->fetch();
+
 	echo '
 	<tr>
-		<td><a href="topic.php?topic_id='.$stmt['topic_id'].'">'.$stmt['topic_titre'].'</a></td>
-		<td>'.$stmt['topic_createur'].'</td>
-		<td>'.$stmt['topic_post'].'</td>
-		<td>'.$stmt['topic_last_post'].'</td>
+		<td><a href="topic.php?topic_id='.$data['topic_id'].'">'.$data['topic_titre'].'</a></td>
+		<td>'.$auteur['membre_pseudo'].'</td>
+		<td>'.$nombreMessages.'</td>
+		<td>'.$data['topic_last_post'].'</td>
 	</tr>';
 }
 

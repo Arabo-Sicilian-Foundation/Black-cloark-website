@@ -22,7 +22,6 @@ post_createur int(11) NOT NULL,
 post_texte text collate latin1_general_ci NOT NULL,
 post_time int(11) NOT NULL,
 topic_id int(11) NOT NULL,
-post_forum_id int(11) NOT NULL,
 PRIMARY KEY  (post_id)
 );
 
