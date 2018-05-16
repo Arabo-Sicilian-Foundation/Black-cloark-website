@@ -1,8 +1,4 @@
-@font-face
-{
-	font-family: CloisterBlack;
-	src: url(CloisterBlack.ttf);
-}
+
 
 @font-face
 {
@@ -60,10 +56,6 @@ p
 .connexion
 {
 	text-align: right;
-}
-
-.connexion a
-{
 	font-size: 18px;
 }
 
@@ -77,4 +69,110 @@ h2
 	text-align: center;
 	text-decoration: underline;
 	color: white;
+}
+
+.logo_nom
+{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+section.contact
+{
+    margin-left: 180px;
+    margin-right: 180px;
+    margin-top: 30px;
+    color: white;
+    border: 2px solid darkgrey;
+    color: black;
+    text-align: center;
+}
+
+.contact h1
+{
+	color: white;
+}
+
+section.contact div
+{
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+.search
+{
+	text-align: center;
+}
+
+.event h2
+{
+	text-align: center;
+	color: white;
+	text-decoration: underline;
+}
+
+.event
+{
+	text-decoration: none;
+	color: white;
+	text-align: center;
+}
+
+a.event:hover
+{
+	color: #0c0c0c;
+}
+
+table.topic
+{
+	margin-top: 50px;
+	text-align: left;
+	margin-left: auto;
+	margin-right: auto;
+	color: white;
+	border-spacing: 50px 10px;
+	border: 1px solid darkgrey;
+}
+
+.topic a
+{
+	color: white;
+}
+
+.newTopic
+{
+	text-align: center;
+}
+
+section.post
+{
+	border: 1px solid darkgrey;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.post h3
+{
+	color: white;
+	margin-left: 10px;
+}
+
+.post p
+{
+	text-align: left;
+	margin-left: 10px;
+}
+
+.post a
+{
+	text-decoration: none;
+	color: red;
+	margin-left: 10px;
+}
+
+.delete
+{
+	text-decoration: none;
+	color: red;
 }

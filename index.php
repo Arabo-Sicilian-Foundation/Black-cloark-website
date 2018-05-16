@@ -5,10 +5,7 @@ include("includes/identifiant.php");
 include("includes/debut.php");
 
 if ($id==0) erreur(ERR_ISNT_CO);
-?>
 
-<h1>Forum</h1>
-<?php
 if(isset($_POST['sujet']))
 {
 	$stmt = $db->prepare('SELECT membre_id FROM forum_membres WHERE membre_pseudo=:id');
@@ -76,9 +73,8 @@ echo '</table>';
 
 echo'
 <form class="newTopic" action="index.php" method="post">
-	<input type="text" name="sujet" placeholder="Sujet" required>
-	<br>
-	<input type="submit" value="Créer">
+	<input type="text" name="sujet" placeholder="Sujet du topic" required>
+	<input type="submit" value="Créer un nouveau topic">
 	</form>';
 
 ?>

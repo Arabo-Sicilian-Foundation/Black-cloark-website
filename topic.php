@@ -33,41 +33,36 @@ if(isset($_POST['texte']))
 
 if(isset($_GET['topic_id']))
 {
+	if($_SESSION['pseudo'] == $posteur['membre_pseudo'] || $_SESSION['level'] == 3)
+	{
+		echo '<a class="delete" href="delete.php?idtopic='.$_GET['topic_id'].'&delete=1">supprimer le topic</a>';
+	}
+
 	$posts = $db->prepare('SELECT * FROM forum_post WHERE topic_id=:topicID');
 	$posts->bindParam(':topicID',$_GET['topic_id']);
 	$posts->execute();
 
 	$discussion = $posts->fetchAll();
 
-	?>
-	<table class="discussion">
-		<tr>
-			<th>Contenu</th>
-			<th>Auteur</th>
-		</tr>
-
-	<?php
 	for ($i=0; $i < $posts->rowCount(); $i++)
 	{
 		$membres = $db->prepare('SELECT membre_pseudo FROM forum_membres,forum_post WHERE membre_id=:idposteur');
 		$membres->bindParam(':idposteur',$discussion[$i]['post_createur']);
 		$membres->execute();
 		$posteur = $membres->fetch();
-		echo '
-		<tr>
-		<td>'.$discussion[$i]['post_texte'].'</a></td>
-		<td>'.$posteur['membre_pseudo'].'</td>';
-		if($_SESSION['pseudo']==$posteur)
+		echo '<section class="post">';
+		if($_SESSION['pseudo'] == $posteur['membre_pseudo'] || $_SESSION['level'] == 3)
 		{
-		  	echo '<td><a href="delete.php?idpost='.$discussion[$i]['post_id'].'&idtopic='.$_GET['topic_id'].'">supprimer</a></td>';
+		  	echo '<a href="delete.php?idpost='.$discussion[$i]['post_id'].'&idtopic='.$_GET['topic_id'].'">supprimer</a>';
     	}
-    	echo '</tr>';
+		echo '<h3>'.$posteur['membre_pseudo'].'</h3>
+		<p>'.$discussion[$i]['post_texte'].'</p>';
+    	echo '</section>';
 		$membres->CloseCursor();
   	}
-	echo '</table>';
 	echo'
 	<form class="newpost" action="topic.php?topic_id='.$_GET['topic_id'].'" method="post">
-		<textarea rows="10" cols="100" name="texte" placeholder="contenu" required></textarea>
+		<textarea rows="5" cols="100" name="texte" placeholder="Ecrire un réponse" required></textarea>
 		<br>
 		<input type="submit" value="Poster">
 		</form>';

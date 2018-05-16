@@ -22,6 +22,11 @@ if(isset($_POST['pswrd']) && isset($_POST['pseudo']))
 
 		$pseudo = $_SESSION['pseudo'];
 	  	echo '<p>Bienvenue '.$pseudo.'.</p>';
+		echo '
+		    <script type="text/javascript">
+		    document.location.href="accueil.php";
+		    </script>
+		    ';
   	}
 	else
 	{
@@ -45,14 +50,13 @@ if(isset($_POST['pswrd']) && isset($_POST['pseudo']))
 else
 {
 	?>
-	<script type="text/javascript" src="redirection.js"></script>
 	<h2>Connexion :</h2>
 	<form class="connexion2" action="connexion.php" method="post">
 		<input type="text" name="pseudo" placeholder="login" required>
 		<br>
 		<input type="password" name="pswrd" placeholder="mot de passe" required>
 		<br>
-		<input type="submit" value="connexion" onclick="redirection()">
+		<input type="submit" value="connexion">
 	</form>
 	<p><a class="connexion2" href="register.php">créer un compte</a></p>
 	<?php

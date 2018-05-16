@@ -14,6 +14,7 @@
 		<title>Black Cloark Production</title>
 		<link href="accueil.css" rel="stylesheet" type="text/css">
 		<link rel="icon" type="image" href="favicon.png">
+		<script type="text/javascript" src="redirection.js"></script>
 	</head>
 
 	<body>
@@ -28,7 +29,7 @@
 		}
 		else
 		{
-			echo '<p class="connexion">Connecté en tant que '.$_SESSION['pseudo'].'<a class="connexion" href="deco.php">déconnexion</a></p>';
+			echo '<p class="connexion">Connecté en tant que :<br>'.$_SESSION['pseudo'].'<br><a class="connexion" href="deco.php">déconnexion</a></p>';
 		}
 		?>
   	  <img src="logo_nom.png" alt="BlackCloarkProd" height="300">

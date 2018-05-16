@@ -102,6 +102,12 @@ else
         $_SESSION['id'] = $db->lastInsertId(); ;
         $_SESSION['level'] = 2;
         $query->CloseCursor();
+
+		echo '
+		    <script type="text/javascript">
+		    document.location.href="accueil.php";
+		    </script>
+		    ';
     }
     else
     {

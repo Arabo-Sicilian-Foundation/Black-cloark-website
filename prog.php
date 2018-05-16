@@ -9,7 +9,7 @@ include("includes/debut.php")
 			<input type="text" name="recherche" placeholder="rechercher un évènement"><input type="submit" value="Rechercher">
 		</form>
 
-		<section>
+		<section class="event">
 			<h2>Évènements à venir :</h2>
 
 			<?php
@@ -36,9 +36,6 @@ include("includes/debut.php")
 					echo 'fichier event introuvable';
 				}
 			?>
-		</section>
-
-		<section>
 			<h2>Évènements antérieurs :</h2>
 
 			<?php

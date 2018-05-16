@@ -57,8 +57,9 @@ img
 	margin-right: 60px;
 }
 
-h2
+.event h2
 {
+	text-align: left;
 	color: white;
 	text-decoration: underline;
 }

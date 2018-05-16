@@ -28,13 +28,13 @@ h2
     font-family: cool,arial;
 }
 
-img
+.contact img
 {
     margin-right: 8px;
 }
 
 
-section
+section.contact
 {
     margin-left: 180px;
     margin-right: 180px;
@@ -46,7 +46,7 @@ section
     text-align: center;
 }
 
-section div
+section.contact div
 {
     margin-top: 100px;
     margin-bottom: 100px;
