@@ -28,7 +28,7 @@
 		}
 		else
 		{
-				echo'<a class="connexion" href="deco.php">déconnexion</a>';
+			echo '<p class="connexion">Connecté en tant que '.$_SESSION['pseudo'].'<a class="connexion" href="deco.php">déconnexion</a></p>';
 		}
 		?>
   	  <img src="logo_nom.png" alt="BlackCloarkProd" height="300">

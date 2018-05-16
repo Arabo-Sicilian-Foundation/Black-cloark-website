@@ -16,8 +16,8 @@ if(isset($_POST['pswrd']) && isset($_POST['pseudo']))
 	if($res['membre_mdp'] == md5($_POST['pswrd']))
 	{
 		$_SESSION['pseudo'] = $res['membre_pseudo'];
-		$_SESSION['rang'] = $res['membre_rang'];
-		$_SESSION['id'] = $db->lastInsertId();
+		$_SESSION['level'] = $res['membre_rang'];
+		$_SESSION['id'] = $res['membre_id'];
 		$stmt->CloseCursor();
 
 		$pseudo = $_SESSION['pseudo'];
@@ -25,7 +25,7 @@ if(isset($_POST['pswrd']) && isset($_POST['pseudo']))
   	}
 	else
 	{
-    	if ($_SESSION['pseudo']!=$_POST['pseudo'])
+    	if ($_SESSION['pseudo'] != $_POST['pseudo'])
 		{
 			?>
 			<p>login ou mot de passe incorrect<p>
