@@ -1,0 +1,102 @@
+\documentclass[a4paper, 12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[OT1]{fontenc}
+\usepackage[french]{babel}
+
+\pagestyle{headings}
+
+\title{Rapport Développement Web}
+\author{Hugo Mohamed et Lorenzo Marnat}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\newpage
+
+\tableofcontents
+
+\newpage
+
+\section{Présentation du site}
+Nous avons décidé de réaliser un site pour une association qui organise des concerts de Metal en Rhône-Alpes, du nom de Black Cloark Production. Cette association à été cofondée par un ami commun, avec qui nous avons pu discuter du contenu du site.
+Pour ce qui est du contenu, nous nous sommes en partie aider de l'aspect de certains sites de festivals ou d'autres organisations de concerts et d'évènements.
+
+\subsection{Accueil}
+Une page d'accueil classique, avec une courte description de Black Cloark Production, ainsi que l'affiche du gros évènement de l'association, le \textit{Ravenous Altar Festival}.
+
+\subsection{Programmation}
+Cette page contient toute la programmation de l'association, les évènements à venir et ceux qui ont déjà eu lieu. Les évènements sont chargés via un fichier texte, ou chaque ligne correspond à un évènement. Un évènement est composé de :
+\begin{itemize}
+\item La date de l'évènement
+\item Le nom de l'évènement
+\item Le lien vers la page facebook de l'évènement
+\end{itemize}
+Le tout séparé par des ';'.
+Nous avons décidés de rediriger les liens vers l'évènements Facebook associé, car Facebook est le réseau social principal de Black Cloark Production, c'est la qu'ils ont le plus de visibilité et ou quasiment toute les personnes voulant se tenir au courants des évènements de l'association se rendent. De plus les évènements facebook possèdes de nombreuses fonctionnalités que notre site ne possède pas, il est donc logique de préférer utiliser ce système.
+
+La page de la programmation correspond également une barre de recherche, qui permet de rechercher un évènement via son nom ou sa date.
+
+\subsection{Contact}
+Une page avec toutes les coordonées de l'association (Page Facebook, e-mail, téléphone)
+
+\subsection{Forum}
+Un forum permettant à la communauté d'échanger sur différents sujets. Un personne connectée (Nous en reparlerons dans la suite), peut créer un nouveau topic et poster des messages dedans, ainsi que dans les autres topics. Il peux également décider de supprimer ses propres messages, ainsi que les topics qu'il a créer.
+Un administrateur dispose de tout les droits sur le forum, il peut supprimer n'importe quel message ou topics.
+
+Lorsque l'on arrive sur la page d'index du forum, on se retrouve avec la liste de tout les topics affichés, avec le nom de l'auteur ainsi que le nombre de messages que chaque topics comportent.
+
+Quand un utilisateur se rend dans un topic, on lui affiche la liste des messages avec l'utilisateurs qui a poster chaque messages. On affiche également un petit lien pour supprimer le message (s'il est supprimable). Les messages sont affiché dans l'ordre de parution, le plus vieux est donc tout en haut, comme dans beaucoup de forums (forum jeuxvideo.com par exemple).
+
+En dessous des messages, l'utilisateur peut poster un message via un formulaire.
+
+\section{Base de données}
+\subsection{Forum}
+La base de données est fortement utilisée pour gérer entièrement le forum. On dispose de 3 tables :
+\begin{itemize}
+\item forum\_membres :
+  Cette table comporte toute les informations nécessaire sur l'utilisateur :
+  \begin{itemize}
+  \item Son id.
+  \item Son pseudo.
+  \item Son mot de passe (crypté).
+  \item Son adresse email.
+  \item Son rang (simple utilisateur, ou administrateur).
+  \end{itemize}
+
+\item forum\_post
+  Cette table comporte les données de chaques messages posté sur le forum :
+  \begin{itemize}
+  \item L'identifiant du message.
+  \item L'identifiant de la personne qui a poster le message.
+  \item Le contenu du message.
+  \item L'identifiant du topic dans lequel le message est posté.
+  \end{itemize}
+
+\item forum\_topic
+  Cette table comporte les données des topics du forum :
+  \begin{itemize}
+  \item L'identifiant du topic
+  \item Le titre du topic
+  \item L'identifiant de la personne qui a créer le topic
+  \end{itemize}
+\end{itemize}
+
+\subsection{Les comptes}
+Le site offre la possibilité de créer un compte, ce qui permet de pouvoir rentrer sur le forum.
+Lors de son inscription on lui demande de choisir un pseudo (qui ne doit pas déjà exister), un mot de passe (qu'il doit confirmer) et de rentrer son adresse mail. L'adresse mail n'est cepedant actuellement pas utilisée par le site.
+
+\subsection{Programmation de l'association}
+Nous aurions pu utilisé une base de données pour stockés la liste des évènement de l'association, mais l'avantage d'utilisé un simple fichier texte est qu'il est beaucoup plus facile pour quelqu'un qui ne s'y connait pas en web de rajouter, enlever ou modifier un évènement. Grâce à cela, n'importe quelle personne de l'association aura la possibilité de pouvoir gérer la programmation du site sans nécessairement avoir de connaissance en développement web.
+
+\section{Difficulté rencontrées}
+Les plus grosses difficultés que nous avons rencontrées ont été sur la création du forum et la gestion de la base de données via php. Mais nous avons pu nous en sortir notemment grâce au cours, mais également à des sites web comme openclassroom ou encore la documentation php.
+Un des problèmes fut simplement l'installation des paquets et des dépendances nécessaires au bon fonctionnement de mysql et php que nous avons pu régler par la suite, après de nombreuses recherche sur internet.
+
+\section{Répartition du travail}
+Il nous est plutot compliqué de dire qui a fait quoi, nous n'avons pas eu une division du travail strict. Nous avons l'habitude de travailler ensemble, nous avons déjà réalisé plusieurs projets ensembles. Nous nous sommes vu en dehors des cours pour avancer le projet, et nous avons également travailler chacun de notre coté, et partager notre code via github.
+Hugo c'est tout de même plus penché sur la partie forum, mais Lorenzo a tout de même pu apporter son aide sur ce point assez important du site. Le design CSS à été réaliser en majeur partie par Hugo.
+Dans l'ensemble, l'importance de notre travail ainsi que notre participation a été équivalente.
+
+\end{document}
